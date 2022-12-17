@@ -1,0 +1,9 @@
+{
+    "use_cases": [
+        {
+            "name": "test",
+            "max_time": 120,
+            "last_page": "/cucina"
+        }
+    ]
+} 

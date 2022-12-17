@@ -19,15 +19,15 @@ class CreateDatabase extends Migration
             $table->int('max_time');
             $table->text('last_page');
         });
-        Schema::create('performance', function(Blueprint $table){
+        Schema::create('performances', function(Blueprint $table){
             $table->uuid('id')->primary();
-            $table->foreignId('id_use_case')->costrained('use_cases');
         });
-        Schema::create('performance_data', function(Blueprint $table){
-            $table->foreignId('id_performance')->costrained('performance');
+        Schema::create('performances_data', function(Blueprint $table){
+            $table->foreignId('id_performances')->costrained('performances');
             $table->text('page');
             $table->int('time');
         });
+
 
     }
 
@@ -39,7 +39,7 @@ class CreateDatabase extends Migration
     public function down()
     {
         Schema::dropIfExists('use_cases');
-        Schema::dropIfExists('performance');
-        Schema::dropIfExists('performance_data');
+        Schema::dropIfExists('performances');
+        Schema::dropIfExists('performances_data');
     }
 }
