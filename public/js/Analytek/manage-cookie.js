@@ -40,6 +40,13 @@ export function deleteAnalytekCookie() {
     }
 }
 
+export function checkAnalytekCookie() {
+    if(getCookie("analytek_0") == "")
+            return true;
+    
+    return false;
+}
+
 export function lastAnalytekCookie() {
     for(var i = 0; i < 100; i++) {
         var cookie = getCookie("analytek_" + i);

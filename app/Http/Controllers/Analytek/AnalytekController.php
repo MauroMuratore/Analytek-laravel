@@ -15,5 +15,19 @@ class AnalytekController extends Controller
         return UseCase::all();
     }
 
+    public function setPerfomanceData(Request $request)
+    {
+        $perfomance = new Perfomance();
+        $perfomance->id = $request->id;
+        $perfomance->id_use_case = $request->id_use_case;
+        $perfomance->save();
+
+        $perfomanceData = new PerfomanceData();
+        $perfomanceData->id_perfomance = $request->id;
+        $perfomanceData->page = $request->page;
+        $perfomanceData->time = $request->time;
+        $perfomanceData->save();
+    }
+
 
 }
