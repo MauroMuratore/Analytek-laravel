@@ -1,12 +1,21 @@
-$(document).ready(function() {
-    getUseCases();    
-    /* if(checkAnalytekCookie()){
+import { checkAnalytekCookie, setCookie } from './manage-cookie.js';
+
+$(document).ready(function() { 
+    if(!checkAnalytekCookie("use_case")){
         getUseCases();
     }
     else{
         checkEndPage();
-    } */
+    }
 });
+
+function checkEndPage(){
+    //controllo che sia l'ultima pagina
+    //se è l'ultima pagina, invio i dati
+    end_page = getCookie("end_page");
+    var page = window.location.pathname;
+
+}  
 
 
 //function to get use case
@@ -25,32 +34,15 @@ function getUseCases() {
     })
 }
 
-//function to choose use case
-function chooseUseCase(useCases){
-    console.log(useCases);
-    //creare una funzione che mi fa apparire un dialog con i vari use case
-    //quando l'utente sceglie un use case, lo salvo in un cookie perfomance con un uuid
-}
-
-//function to check if the user is on the last page
-function checkEndPage(){
-    //check if the user is on the last page
-    //if the user is on the last page, send the json perfomance
-    //if the user is not on the last page, do nothing
-}
-
-//function to send the json perfomance
-function sendPerfomance(){
-    //send the json perfomance
-}
-
+//function to add modal
 function addModal(useCases){
     //creo il modal
     var modal = document.createElement("div");
     modal.setAttribute("id", "myModal");
     modal.classList.add("modal");
     modal.setAttribute("style", "display: block; background-color: transparent;");
-    
+    modal.setAttribute("data-bs-backdrop", "static")
+    modal.setAttribute("data-bs-keyboard","false");
     //creo e aggiungo il modal dialog
     var modal_dialog = document.createElement("div");
     modal.append(modal_dialog);
@@ -76,19 +68,31 @@ function addModal(useCases){
     var modal_body = document.createElement("div");
     modal_content.append(modal_body);
     modal_body.classList.add("modal-body");
+    var row = document.createElement("div");
+    row.classList.add("row");
+    modal_body.append(row);
     for(var i = 0; i < useCases.length; i++){
+        var col = document.createElement("div");
+        col.classList.add("col-12");
+        row.append(col);
         var buttonUseCase = document.createElement("button");
         buttonUseCase.setAttribute("type", "button");
         buttonUseCase.classList.add("btn");
         buttonUseCase.classList.add("btn-primary");
-        buttonUseCase.setAttribute("id", "useCase" + i);
+        buttonUseCase.classList.add("my-2");
+        var id = useCases[i].id;
+        var end_page = useCases[i].end_page;
+        buttonUseCase.setAttribute("id", "useCase" + id);
         buttonUseCase.innerHTML = useCases[i].name;
-        modal_body.append(buttonUseCase);
+        col.append(buttonUseCase);
         buttonUseCase.onclick = function(){
             //salvo il use case scelto in un cookie
-            //mando il json perfomance
+            setCookie("use_case", id);
+            setCookie("end_page", end_page);
             //chiudo il modal
-            $('#myModal').modal('hide');
+            //$('#myModal').modal("hide");
+            $('#myModal').remove();
+
         }
     }
     modal_body.setAttribute("style", "background-color: black;");
@@ -103,11 +107,19 @@ function addModal(useCases){
     buttonClose.setAttribute("type", "button");
     buttonClose.classList.add("btn");
     buttonClose.classList.add("btn-secondary");
+    
     buttonClose.setAttribute("data-dismiss", "modal");
     buttonClose.innerHTML = "Close";
+    buttonClose.onclick = function(){
+        //salvo il use case scelto in un cookie
+        setCookie("use_case", "no_use_case");
+        setCookie("end_page", "no_end_page");
+        //chiudo il modal
+        //$('#myModal').modal("hide");
+        $('#myModal').remove();
+    }
     modal_footer.append(buttonClose);
     
 
     $('body').append(modal);
-    $('#myModal').modal('show');
 }

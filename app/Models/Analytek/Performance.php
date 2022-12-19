@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Perfomance extends Model
 {
     protected $table = "performances";
-    protected $fillable = ['id', 'page', 'time'];
+    protected $fillable = ['id', 'id_use_case'];
     public $timestamps = false;
     use HasFactory;
 

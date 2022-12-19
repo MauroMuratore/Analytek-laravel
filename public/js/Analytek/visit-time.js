@@ -1,4 +1,4 @@
-import {setCookie} from "./manage-cookie.js";
+import {setCookie as appendCookie} from "./manage-cookie.js";
 
 var start_time = 0;
 
@@ -19,7 +19,7 @@ $('a').click(function(event) {
     var end_time = date.getTime();
     var page = window.location.pathname;
     var time = end_time - start_time;
-    setCookie("analytek", page + ":" + time);    
+    appendCookie("analytek", page + ":" + time);    
 
     // And when it's done, go to the link
     window.location = href;
