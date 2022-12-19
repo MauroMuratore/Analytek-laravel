@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDatabase extends Migration
+class CreateAnalytekTable extends Migration
 {
     /**
      * Run the migrations.
@@ -16,7 +16,7 @@ class CreateDatabase extends Migration
         Schema::create('use_cases', function(Blueprint $table){
             $table->id();
             $table->text('name');
-            $table->int('max_time');
+            $table->integer('max_time');
             $table->text('last_page');
         });
         Schema::create('performances', function(Blueprint $table){
@@ -25,7 +25,7 @@ class CreateDatabase extends Migration
         Schema::create('performances_data', function(Blueprint $table){
             $table->foreignId('id_performances')->costrained('performances');
             $table->text('page');
-            $table->int('time');
+            $table->integer('time');
         });
 
 

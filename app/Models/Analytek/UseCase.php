@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Analytek;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class PerfomanceData extends Model
+class UseCase extends Model
 {
-    protected $table = "uses_cases";
+    protected $table = "use_cases";
     protected $fillable = ['id', 'name', 'max_time', 'last_page'];
     public $timestamps = false;
     use HasFactory;

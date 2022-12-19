@@ -2,7 +2,13 @@
 // Path: public/js/Analytek/manage-cookie.js
 
 export function setCookie(cname, cvalue) {
-    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+    var cookie_value = getCookie(cname);
+    var value = "";
+    if(cookie_value != "")
+        value = cookie_value + "," + cvalue;
+    else
+        value = cvalue;
+    document.cookie = cname + "=" + value + ";path=/";
 }
 
 export function getCookie(cname) {
@@ -21,38 +27,13 @@ export function getCookie(cname) {
     return "";
 }
 
-export function getAllAnalytekCookies() {
-    var cookies = [];
-    for(var i = 0; i < 100; i++) {
-        var cookie = getCookie("analytek_" + i);
-        if (cookie != "") {
-            cookies.push(cookie);
-        }
-    }
-    return cookies;
-}
-
 export function deleteAnalytekCookie() {
-    for(var i = 0; i < 100; i++) {
-        if(getCookie("analytek_" + i) == "")
-            break;
-        document.cookie = "analytek_" + i + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-    }
+    //to implement
 }
 
-export function checkAnalytekCookie() {
-    if(getCookie("analytek_0") == "")
-            return true;
+export function checkAnalytekCookie(cname) {
+    if(getCookie("cname") == "")
+            return false;
     
-    return false;
-}
-
-export function lastAnalytekCookie() {
-    for(var i = 0; i < 100; i++) {
-        var cookie = getCookie("analytek_" + i);
-        if (cookie == "") {
-            return "analytek_" + i;
-        }
-    }
-    return "analytek_" + 101;
+    return true;
 }
