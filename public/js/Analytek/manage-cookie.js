@@ -2,12 +2,14 @@
 // Path: public/js/Analytek/manage-cookie.js
 
 export function appendCookie(cname, cvalue) {
-    var cookie_value = getCookie(cname);
-    var value = "";
-    if(cookie_value != "")
+    let cookie_value = getCookie(cname);
+    let value = "";
+    if(cookie_value != ""){
         value = cookie_value + "," + cvalue;
-    else
+    }
+    else{
         value = cvalue;
+    }
     document.cookie = cname + "=" + value + ";path=/";
 }
 
@@ -16,11 +18,11 @@ export function setCookie(cname, cvalue) {
 }
 
 export function getCookie(cname) {
-    var name = cname + "=";
-    var decodedCookie = decodeURIComponent(document.cookie);
-    var ca = decodedCookie.split(';');
-    for(var i = 0; i <ca.length; i++) {
-        var c = ca[i];
+    let name = cname + "=";
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let ca = decodedCookie.split(';');
+    for(let i = 0; i <ca.length; i++) {
+        let c = ca[i];
         while (c.charAt(0) == ' ') {
             c = c.substring(1);
         }

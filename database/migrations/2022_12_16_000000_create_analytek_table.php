@@ -20,11 +20,12 @@ class CreateAnalytekTable extends Migration
             $table->text('last_page');
         });
         Schema::create('performances', function(Blueprint $table){
-            $table->uuid('id')->primary();
-            $table->foreignId('id_use_case')->costrained('use_cases');
+            $table->uuid('uuid')->primary();
+            $table->foreignUuid('id_use_case')->costrained('use_cases');
         });
         Schema::create('performances_data', function(Blueprint $table){
-            $table->foreignId('id_performances')->costrained('performances');
+            $table->id();
+            $table->uuid('id_performance')->costrained('performances');
             $table->text('page');
             $table->integer('time');
         });

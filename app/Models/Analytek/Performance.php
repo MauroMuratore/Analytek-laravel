@@ -5,15 +5,15 @@ namespace App\Models\Analytek;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Perfomance extends Model
+class Performance extends Model
 {
     protected $table = "performances";
-    protected $fillable = ['id', 'id_use_case'];
+    protected $fillable = ['uuid', 'id_use_case'];
     public $timestamps = false;
     use HasFactory;
 
     public function perfomanceData(){
-        return $this->hasMany(PerfomanceData::class, 'id_perfomance');
+        return $this->hasMany(PerfomanceData::class, 'id_performance');
     }
 
     public function useCase(){

@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Analytek;
 
-use App\Models\Analytek\Perfomance;
-use App\Models\Analytek\PerfomanceData;
+use App\Models\Analytek\Performance;
+use App\Models\Analytek\PerformanceData;
 use App\Models\Analytek\UseCase;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
+use App\Http\Controllers\Controller;
 
 class AnalytekController extends Controller
 {
@@ -17,16 +18,47 @@ class AnalytekController extends Controller
 
     public function setPerfomanceData(Request $request)
     {
-        $perfomance = new Perfomance();
-        $perfomance->id = $request->id;
-        $perfomance->id_use_case = $request->id_use_case;
-        $perfomance->save();
+        
+        $json_request = json_decode($request->getContent(), true);
+        $uuid = (string) Str::uuid();
+        try {
+            Performance::create([
+                'uuid' => $uuid,
+                'id_use_case' => $json_request['use_case']
+            ]);
+            foreach ($json_request['data'] as $data) {
+                $page = explode(':', $data)[0];
+                $time = explode(':', $data)[1];
+                PerformanceData::create([
+                    'id_performance' => $uuid,
+                    'page' => $page,
+                    'time' => $time
+                ]);
+            }
 
-        $perfomanceData = new PerfomanceData();
-        $perfomanceData->id_perfomance = $request->id;
-        $perfomanceData->page = $request->page;
-        $perfomanceData->time = $request->time;
-        $perfomanceData->save();
+        } catch (\GuzzleHttp\Exception\BadResponseException $e) {
+        $errorResJson = $e
+            ->getResponse()
+            ->getBody()
+            ->getContents();
+        $errorRes = json_decode(stripslashes($errorResJson), true);
+        // Return error
+        return response()->json(
+            [
+            'message' => 'error',
+            'data' => $errorRes
+            ],
+            $errorRes['response']['code']
+        );
+        }
+
+        return response()->json(
+            [
+              'status' => '200',
+              'message' => 'success'
+            ],
+            200
+          );
     }
 
 
