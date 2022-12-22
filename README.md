@@ -10,7 +10,7 @@ Un modulo da aggiungere a un progetto laravel dei cookie analitici che permetton
 ` Route::get('/use_cases', [AnalytekController::class, 'getUseCases']); ` <br /> 
 `Route::post('/use_cases', [AnalytekController::class, 'setPerfomanceData']);` <br /> 
 * aggiungere a tutte le pagine i seguenti script nell'header <br /> 
-`<script src="/js/Analytek/visit-time.js" type="module" language="javascript"></script>`
+`<script src="/js/Analytek/visit-time.js" type="module" language="javascript"></script>` <br /> 
 `<script src="/js/Analytek/send-use-case.js" type="module" language="javascript"></script>`
 
 ## Configurare i casi d'uso
