@@ -3,6 +3,8 @@ Current version: v0.1
 ## v0.1.1
 - [ ] Far (ri)partire il timer di _visit-time.js_ quando viene selezionato il caso d'uso
 - [ ] Creare file di installazione
+- [ ] Gestire le dipendenze
+## v0.1.2
 - [ ] Aggiungere versione API
 - [ ] Criptare i cookie e gestire chiave pubblica e privata
 ## v0.2
