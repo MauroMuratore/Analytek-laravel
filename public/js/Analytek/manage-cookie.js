@@ -10,11 +10,11 @@ export function appendCookie(cname, cvalue) {
     else{
         value = cvalue;
     }
-    document.cookie = cname + "=" + value + ";path=/";
+    document.cookie = cname + "=" + value + ";SameSite=Lax;path=/";
 }
 
 export function setCookie(cname, cvalue) {
-    document.cookie = cname + "=" + cvalue + ";path=/";
+    document.cookie = cname + "=" + cvalue + ";SameSite=Lax;path=/";
 }
 
 export function getCookie(cname) {
