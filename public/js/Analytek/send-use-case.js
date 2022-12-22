@@ -44,14 +44,14 @@ function addModal(useCases){
     let modal_html =    "<div class='modal' id='myModal' style='background-color: transparent;' data-bs-backdrop='static' data-bs-keyboard='false' tabindex='-1' aria-labelledby='staticBackdropLabel' > \n \
                             <div class='modal-dialog'> \n \
                                 <div class='modal-content'> \n \
-                                    <div class='modal-header' style='background-color: black;'> \n \
-                                        <h4 class='modal-title'>Choose a use case</h4> \n \
+                                    <div class='modal-header' > \n \
+                                        <h4 style='color: black;' class='modal-title'>Choose a use case</h4> \n \
                                     </div> \n \
-                                    <div class='modal-body' style='background-color: black;'> \n \
+                                    <div class='modal-body'> \n \
                                         <div class='row'> \n \
                                         </div> \n \
                                     </div> \n \
-                                    <div class='modal-footer' style='background-color: black;'> \n \
+                                    <div class='modal-footer'> \n \
                                         <button type='button' class='btn btn-secondary' data-dismiss='modal'>Close</button> \n \
                                     </div> \n \
                                 </div> \n \
