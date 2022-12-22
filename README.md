@@ -1,7 +1,7 @@
-#Analytek
+# Analytek
 cookie analitici per analizzare il percorso e i tempi che ci mettono gli utenti per completare un caso d'uso
 
-#Come usarlo
+# Come usarlo
 -Scaricare e aggiungere il pacchetto al progetto laravel
 -fare la migrazione e il seed
 php artisan migrate:refresh --path=/database/migrations/fileName.php
