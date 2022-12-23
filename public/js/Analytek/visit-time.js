@@ -24,3 +24,8 @@ $('a').click(function(event) {
     // And when it's done, go to the link
     window.location = href;
 });
+
+export function restartTime(){
+    let date = new Date();
+    start_time = date.getTime();
+}

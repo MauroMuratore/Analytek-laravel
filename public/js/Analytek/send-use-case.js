@@ -1,4 +1,5 @@
 import { deleteAnalytekCookie, checkAnalytekCookie, getCookie, setCookie } from './manage-cookie.js';
+import { restartTime } from './visit-time.js';
 
 $(document).ready(function() { 
     if(!checkAnalytekCookie("use_case")){
@@ -52,7 +53,7 @@ function addModal(useCases){
                                         </div> \n \
                                     </div> \n \
                                     <div class='modal-footer'> \n \
-                                        <button type='button' class='btn btn-secondary' data-dismiss='modal'>Close</button> \n \
+                                        <button id='cancelButton' type='button' class='btn btn-secondary' data-dismiss='modal'>Close</button> \n \
                                     </div> \n \
                                 </div> \n \
                             </div> \n \
@@ -79,11 +80,20 @@ function createUseCaseButtons(use_cases){
             //salvo il use case scelto in un cookie
             setCookie("use_case", element.id);
             setCookie("last_page", element.last_page);
+            //riparto il timer
+            restartTime();
             //chiudo il modal
             $('#myModal').modal("hide");
             //$('#myModal').remove();
         }
         $('.modal-body > .row').append(col);
+    });
+    buttonCancel = $("#cancelButton");
+    buttonCancel.click(function(){
+        $('#myModal').modal("hide");
+        setCookie("use_case", "no_use_case");
+        setCookie("last_page", "/no_use_case_analytek");
+        //$('#myModal').remove();
     });
 }
 //function to send use case
