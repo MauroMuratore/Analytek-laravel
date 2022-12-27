@@ -1,9 +1,0 @@
-{
-    "use_cases": [
-        {
-            "name": "Go to the kitchen",
-            "max_time": 120,
-            "last_page": "/cucina"
-        }
-    ]
-} 
