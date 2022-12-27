@@ -17,15 +17,15 @@ class CreateAnalytekTable extends Migration
             $table->id();
             $table->text('name');
             $table->integer('max_time');
-            $table->text('last_page');
+            $table->text('pages');
         });
-        Schema::create('performances', function(Blueprint $table){
+        Schema::create('uc_executions', function(Blueprint $table){
             $table->uuid('uuid')->primary();
             $table->foreignUuid('id_use_case')->costrained('use_cases');
         });
-        Schema::create('performances_data', function(Blueprint $table){
+        Schema::create('uc_times_on_page', function(Blueprint $table){
             $table->id();
-            $table->uuid('id_performance')->costrained('performances');
+            $table->uuid('uuid_uc_exe')->costrained('uc_executions');
             $table->text('page');
             $table->integer('time');
         });
@@ -41,7 +41,7 @@ class CreateAnalytekTable extends Migration
     public function down()
     {
         Schema::dropIfExists('use_cases');
-        Schema::dropIfExists('performances');
-        Schema::dropIfExists('performances_data');
+        Schema::dropIfExists('uc_executions');
+        Schema::dropIfExists('uc_times_on_page');
     }
 }

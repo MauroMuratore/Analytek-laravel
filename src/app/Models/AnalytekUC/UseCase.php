@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Analytek;
+namespace App\Models\AnalytekUC;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -8,12 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class UseCase extends Model
 {
     protected $table = "use_cases";
-    protected $fillable = ['id', 'name', 'max_time', 'last_page'];
+    protected $fillable = ['id', 'name', 'max_time', 'pages'];
     public $timestamps = false;
     use HasFactory;
 
-    public function perfomance(){
-        return $this->hasMany(UseCase::class, 'id_use_case');
+    public function uc_executions(){
+        return $this->hasMany(UCExecution::class, 'id_use_case');
     }
 
 }

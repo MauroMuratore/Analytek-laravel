@@ -7,7 +7,15 @@ $(document).ready(function() {
     start_time = date.getTime();
 });
 
-$('a').click(function(event) {
+window.onhashchange = function() {
+    let date = new Date();
+    let end_time = date.getTime();
+    let page = window.location.pathname;
+    let time = end_time - start_time;
+    appendCookie("analytek", page + ":" + time );
+}
+
+/* $('a').click(function(event) {
     // Remember the link href
     let href = this.href;
 
@@ -23,7 +31,7 @@ $('a').click(function(event) {
 
     // And when it's done, go to the link
     window.location = href;
-});
+}); */
 
 export function restartTime(){
     let date = new Date();

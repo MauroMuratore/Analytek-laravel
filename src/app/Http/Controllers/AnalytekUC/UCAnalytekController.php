@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\Analytek;
+namespace App\Http\Controllers\AnalytekUC;
 
-use App\Models\Analytek\Performance;
-use App\Models\Analytek\PerformanceData;
-use App\Models\Analytek\UseCase;
+use App\Models\AnalytekUC\UCExecution;
+use App\Models\AnalytekUC\UCTimeOnPage;
+use App\Models\AnalytekUC\UseCase;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Http\Controllers\Controller;
 
-class AnalytekController extends Controller
+class UCAnalytekController extends Controller
 {
     public function getUseCases()
     {

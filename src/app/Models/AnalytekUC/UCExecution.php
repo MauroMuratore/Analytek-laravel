@@ -1,19 +1,19 @@
 <?php
 
-namespace App\Models\Analytek;
+namespace App\Models\AnalytekUC;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Performance extends Model
+class UCExecution extends Model
 {
-    protected $table = "performances";
+    protected $table = "uc_executions";
     protected $fillable = ['uuid', 'id_use_case'];
     public $timestamps = false;
     use HasFactory;
 
-    public function perfomanceData(){
-        return $this->hasMany(PerfomanceData::class, 'id_performance');
+    public function UCTimeOnPage(){
+        return $this->hasMany(UCTimeOnPage::class, 'id_uc_execution');
     }
 
     public function useCase(){

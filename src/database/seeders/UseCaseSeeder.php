@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Analytek\UseCase;
+use App\Models\AnalytekUC\UseCase;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
@@ -17,7 +17,7 @@ class UseCaseSeeder extends Seeder
             DB::table('use_cases')->insert([
                 'name' => $usesCase[$i]['name'],
                 'max_time' => $usesCase[$i]['max_time'],
-                'last_page' => $usesCase[$i]['last_page'],
+                'pages' => $usesCase[$i]['pages'],
             ]);
         }         
     }

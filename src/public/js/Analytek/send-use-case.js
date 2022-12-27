@@ -14,12 +14,19 @@ $(document).ready(function() {
     //se è l'ultima pagina, invio i dati
 function checkEndPage(){
     let page = window.location.pathname;
-    let last_page = getCookie("last_page");
-    if(last_page == page){
-        console.log("arrivato alla fine invio dati");
-        postPerfomance();
-        deleteAnalytekCookie(); 
+    let pages = getCookie("pages").split(",", limit=1);
+    let next_page = pages[0];
+    if(next_page == page){
+        if(pages.length == 1){
+            console.log("arrivato alla fine invio dati");
+            postPerfomance();
+            deleteAnalytekCookie(); 
+        }
+        else{
+            setCookie("pages", pages[1]);
+        }
     }
+
 
 
 }  
@@ -79,7 +86,7 @@ function createUseCaseButtons(use_cases){
         button.onclick = function(){
             //salvo il use case scelto in un cookie
             setCookie("use_case", element.id);
-            setCookie("last_page", element.last_page);
+            setCookie("pages", element.pages);
             //riparto il timer
             restartTime();
             //chiudo il modal
@@ -92,7 +99,7 @@ function createUseCaseButtons(use_cases){
     buttonCancel.click(function(){
         $('#myModal').modal("hide");
         setCookie("use_case", "no_use_case");
-        setCookie("last_page", "/no_use_case_analytek");
+        setCookie("pages", "/no_use_case_analytek");
         //$('#myModal').remove();
     });
 }
