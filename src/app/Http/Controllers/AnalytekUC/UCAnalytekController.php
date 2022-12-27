@@ -22,15 +22,15 @@ class UCAnalytekController extends Controller
         $json_request = json_decode($request->getContent(), true);
         $uuid = (string) Str::uuid();
         try {
-            Performance::create([
+            UCExecution::create([
                 'uuid' => $uuid,
                 'id_use_case' => $json_request['use_case']
             ]);
             foreach ($json_request['data'] as $data) {
                 $page = explode(':', $data)[0];
                 $time = explode(':', $data)[1];
-                PerformanceData::create([
-                    'id_performance' => $uuid,
+                UCTimeOnPage::create([
+                    'uuid_uc_exe' => $uuid,
                     'page' => $page,
                     'time' => $time
                 ]);

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class UCTimeOnPage extends Model
 {
-    protected $table = "uc_time_on_pages";
+    protected $table = "uc_times_on_page";
     protected $fillable = ['uuid_uc_exe', 'page', 'time'];
     public $timestamps = false;
     use HasFactory;

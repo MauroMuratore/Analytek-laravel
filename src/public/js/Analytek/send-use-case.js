@@ -14,11 +14,10 @@ $(document).ready(function() {
     //se è l'ultima pagina, invio i dati
 function checkEndPage(){
     let page = window.location.pathname;
-    let pages = getCookie("pages").split(",", limit=1);
+    let pages = getCookie("pages").split(",", 2);
     let next_page = pages[0];
     if(next_page == page){
         if(pages.length == 1){
-            console.log("arrivato alla fine invio dati");
             postPerfomance();
             deleteAnalytekCookie(); 
         }
@@ -95,7 +94,7 @@ function createUseCaseButtons(use_cases){
         }
         $('.modal-body > .row').append(col);
     });
-    buttonCancel = $("#cancelButton");
+    let buttonCancel = $("#cancelButton");
     buttonCancel.click(function(){
         $('#myModal').modal("hide");
         setCookie("use_case", "no_use_case");
