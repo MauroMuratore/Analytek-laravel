@@ -1,0 +1,21 @@
+{
+    "name": "murotek/analytek",
+    "description": "module for Laravel to install analytic cookies",
+    "type": "library",
+    "require": {
+        "laravel/laravel": "^9.4",
+        "php": "^8.2"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Murotek\\Analytek\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Murotek",
+            "email": "m.muratore001@studenti.unibs.it"
+        }
+    ]
+}
