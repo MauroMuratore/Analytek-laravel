@@ -8,9 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class UCTimeOnPage extends Model
 {
     protected $table = "uc_times_on_page";
-    protected $fillable = ['uuid_uc_exe', 'page', 'time'];
+    protected $fillable = ['uuid_uc_exe', 'page', 'time', 'order'];
     public $timestamps = false;
     use HasFactory;
+    public $incrementing = false;
 
     public function uc_execution(){
         return $this->belongsTo(UCExecution::class, 'uuid_uc_exe');

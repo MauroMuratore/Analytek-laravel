@@ -19,7 +19,10 @@ function checkEndPage(){
     if(next_page == page){
         if(pages.length == 1){
             postPerfomance();
-            deleteAnalytekCookie(); 
+             
+            window.location = "/";
+
+            deleteAnalytekCookie();
         }
         else{
             setCookie("pages", pages[1]);
@@ -104,12 +107,15 @@ function createUseCaseButtons(use_cases){
 }
 //function to send use case
 function postPerfomance(){
-    let address = "/api/use_cases/";
+    let address = "/api/use_cases";
     let use_case = {"use_case" : getCookie("use_case")};
     let pages_times = {"data" :getCookie("analytek").split(",")};
     let ritorno = {
         ... use_case,
         ... pages_times
     };
-    $.post(address, JSON.stringify(ritorno));
+    ritorno = JSON.stringify(ritorno);
+    $.ajaxSetup({async: false});
+    $.post(address, ritorno);
+    console.log('aaaaaa');
 }

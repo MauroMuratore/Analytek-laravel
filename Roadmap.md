@@ -10,6 +10,13 @@ Current version: v0.1.1
 - [x] gestire lato client più pagine per i casi d'uso
 - [x] la registrazione dei tempi su una pagina avviene quando cambia window.location, sono solo quando viene clickato un anchor
 
+## v0.1.3
+- [v] creare la view per i casi d'uso con i diversi grafici
+- [ ] aggiungere descrizione ai casi d'uso 
+
+## v0.1.4
+- [ ] fare grafici con i parametri dell'utente?? forse meglio solo dei filtri
+
 ## v0.2
 - [ ] creare la parte analitica
 - [ ] Mandare il tempo trascorso in una pagina anche senza caso d'uso

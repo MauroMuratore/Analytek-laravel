@@ -22,12 +22,14 @@ class CreateAnalytekTable extends Migration
         Schema::create('uc_executions', function(Blueprint $table){
             $table->uuid('uuid')->primary();
             $table->foreignUuid('id_use_case')->costrained('use_cases');
+            $table->integer('time');
         });
         Schema::create('uc_times_on_page', function(Blueprint $table){
             $table->id();
             $table->uuid('uuid_uc_exe')->costrained('uc_executions');
             $table->text('page');
             $table->integer('time');
+            $table->integer('order');
         });
 
 

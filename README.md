@@ -7,9 +7,10 @@ Un modulo da aggiungere a un progetto laravel dei cookie analitici che permetton
 ` php artisan migrate:refresh --path=/database/migrations/2022_12_16_000000_create_analytek_table.php ` <br /> 
 ` php artisan db:seed --class=UseCaseSeeder ` <br /> 
 * aggiungere a route/api.php le seguenti linee <br /> 
-` use App\Http\Controllers\AnalytekUC\UCAnalytekController` <br />
-` Route::get('/use_cases', [UCAnalytekController::class, 'getUseCases']); ` <br /> 
-` Route::post('/use_cases', [UCAnalytekController::class, 'setPerfomanceData']);` <br /> 
+` use App\Http\Controllers\AnalytekUC\UseCaseController` <br />
+` Route::get('/use_cases', [UseCaseController::class, 'getUseCases']); ` <br /> 
+` Route::get('/use_cases/{id}', [UseCaseController::class, 'getUseCases']); ` <br /> 
+` Route::post('/use_cases', [UseCaseController::class, 'setUCExecution']);` <br /> 
 * aggiungere a tutte le pagine i seguenti script nell'header <br /> 
 `<script src="/js/Analytek/visit-time.js" type="module" language="javascript"></script>` <br /> 
 `<script src="/js/Analytek/send-use-case.js" type="module" language="javascript"></script>`

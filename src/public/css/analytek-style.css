@@ -1,0 +1,30 @@
+body{
+    background-color: #040220;
+    color: whitesmoke;
+}
+
+a, a:visited{
+    background-color: transparent;
+    text-decoration: none;
+    color: whitesmoke;   
+}
+
+a:hover{
+    background-color: transparent;
+    text-decoration: none;
+    color: inherit;
+}
+a:active{
+    background-color: transparent;
+    text-decoration: none;
+    
+}
+
+.tek-color{
+    color: #e03100;
+}
+
+a.tek-color{
+    color: #e03100;
+    font-size: x-large;
+}  
