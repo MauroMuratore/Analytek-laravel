@@ -21,11 +21,15 @@
                 <div id="div-success"></div>
             </div>
             <div class="col-12 py-5">
-                <h3 class="tek-color">Paths</h1>
+                <h3 class="tek-color">Paths' time</h1>
 
                 <div id="div-path-time"></div>
+            </div>
+            <div class="col-12 py-5">
+                <h3 class="tek-color">Paths' count</h1>
                 <div id="div-path-count"></div>
             </div>
+
         </div>
     </div>
 </div>

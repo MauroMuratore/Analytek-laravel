@@ -34,6 +34,7 @@ function plotMaxAvgTime(dataplot){
         x: [ max_time, avg_time],
         type: 'bar',
         orientation: 'h',
+        text: [max_time + " s", avg_time + " s"],
         marker: {
             line: {
                 width: 1.5
@@ -47,12 +48,12 @@ function plotMaxAvgTime(dataplot){
 function plotSuccessRate(dataplot){
     const success = dataplot["success_rate"];
     const fail = dataplot["fail_rate"];
-
     let data=[{
         y: ["success", "fail"],
-        x: [success, fail],
+        x: [success*100, fail*100],
         type: 'bar',
         orientation: 'h',
+        text: [success*100, fail*100],
         marker: {
             color:[ green , red],
             line: {
@@ -90,7 +91,6 @@ function plotPathTime(dataplot){
             let col = colors[colorIndex];
             let regex = RegExp(",", "g");
             let name_path = path["path"].replace(regex, ",<br>");
-            console.log(name_path);
             let data = {
                 y: [name_path],
                 x: [element["avg_time"]],
@@ -124,53 +124,32 @@ function plotPathTime(dataplot){
 
 
 function plotPathCount(dataplot){
-    let paths = dataplot["paths"];
-    console.log(paths);
+    let paths = dataplot["paths"].reverse();
     let allData = [];
+    let colorIndex =0;
     for(let path of paths){
-        let trace ={
-            y: path["path"],
-            x: path["count"],
-            type: 'bar',
-            orientation: 'h',
-            marker: {
-                line: {
-                    width: 1.5
-                }
-            }
-        };
-        console.log(path["path"]);
-        console.log(path["count"]);
-        console.log(trace);
-
-        allData.push(trace);
-    }
-    console.log(allData);
-    Plotly.newPlot("div-path-count", allData);    
-    /* let paths = dataplot["paths"];
-    let allData = [];
-    let colorIndex=0;
-    for( let path of paths){
-        const color = ring_color[colorIndex];
-        colorIndex++;
         let regex = RegExp(",", "g");
         let name_path = path["path"].replace(regex, ",<br>");
-        console.log(path["count"]);
-        let data = {
-            y: path["path"],
-            x: path["count"],
-            type: "bar",
-            orientation: "h",
+        let trace ={
+            y: [name_path],
+            x: [path["count"]],
+            type: 'bar',
+            orientation: 'h',
+            text: path["count"],
             marker: {
-                color: color,
                 line: {
                     width: 1.5
                 }
-            }
+            },
+            showlegend: false,
         };
-        allData.push(data);
-        break;
-    };
-    Plotly.newPlot("div-path-count", allData); */
+        allData.push(trace);
+        colorIndex++;
+        if(colorIndex >= ring_color.length){
+            colorIndex=0;
+        }
+
+    }
+    Plotly.newPlot("div-path-count", allData, layout);    
     
 }
