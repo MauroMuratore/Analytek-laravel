@@ -7,5 +7,5 @@ if [ ! -d $DIR_PROJECT ]; then
     exit 1
 fi
 
-rsync -av src/* $DIR_PROJECT/
-rsync -av analytek-migrate.sh $DIR_PROJECT
+rsync -va --exclude "routes" src/* $DIR_PROJECT
+
