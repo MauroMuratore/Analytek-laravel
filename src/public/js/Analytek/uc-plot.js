@@ -34,7 +34,7 @@ function plotMaxAvgTime(dataplot){
         x: [ max_time, avg_time],
         type: 'bar',
         orientation: 'h',
-        text: [max_time + " s", avg_time + " s"],
+        text: [max_time.toFixed(2) + " s", avg_time.toFixed(2) + " s"],
         marker: {
             line: {
                 width: 1.5
@@ -51,9 +51,10 @@ function plotSuccessRate(dataplot){
     let data=[{
         y: ["success", "fail"],
         x: [success*100, fail*100],
+        domain: [0, 100],
         type: 'bar',
         orientation: 'h',
-        text: [success*100, fail*100],
+        text: [success.toFixed(2)*100, fail.toFixed(2)*100],
         marker: {
             color:[ green , red],
             line: {
@@ -66,6 +67,14 @@ function plotSuccessRate(dataplot){
 }
 
 function plotPathTime(dataplot){
+    let max_time={
+        name: 'max time',
+        type: 'scatter',
+
+        x: [5],
+        orientation: 'v',
+        type: 'bar'
+    };
     let paths = dataplot["paths"];
     let man_pages = JSON.stringify(dataplot["man_pages"]);
     let colors=[];
@@ -81,6 +90,7 @@ function plotPathTime(dataplot){
         }
     }
     let allData = [];
+    allData.push[max_time];
     let used_page = [];
     for( let path of paths){
         let colorIndex=0;

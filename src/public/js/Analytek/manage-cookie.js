@@ -34,9 +34,10 @@ export function getCookie(cname) {
 }
 
 export function deleteAnalytekCookie() {
-    document.cookie = 'analytek=; Max-Age=-99999999;';
-    document.cookie = 'use_case=; Max-Age=-99999999;';  
-    document.cookie = 'pages=; Max-Age=-99999999;';    
+    document.cookie = 'analytek=; Max-Age=-99999999;path=/';
+    document.cookie = 'use_case=; Max-Age=-99999999;path=/';  
+    document.cookie = 'pages=; Max-Age=-99999999;path=/';    
+    console.log("delete cookie");
 }
 
 export function checkAnalytekCookie(cname) {

@@ -14,18 +14,19 @@ $(document).ready(function() {
     //se è l'ultima pagina, invio i dati
 function checkEndPage(){
     let page = window.location.pathname;
-    let pages = getCookie("pages").split(",", 2);
+    let pages = getCookie("pages").split(",");
+    console.log(pages);
     let next_page = pages[0];
     if(next_page == page){
         if(pages.length == 1){
+            console.log("last page");
             postPerfomance();
-             
-            window.location = "/";
 
             deleteAnalytekCookie();
+            //window.location = "/";
         }
         else{
-            setCookie("pages", pages[1]);
+            setCookie("pages", pages.slice(1).toString());
         }
     }
 
