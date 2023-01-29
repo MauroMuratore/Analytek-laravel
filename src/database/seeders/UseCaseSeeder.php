@@ -16,6 +16,7 @@ class UseCaseSeeder extends Seeder
         for($i = 0; $i < count($usesCase); $i++){
             DB::table('use_cases')->insert([
                 'name' => $usesCase[$i]['name'],
+                'description' => $usesCase[$i]['description'],
                 'max_time' => $usesCase[$i]['max_time'],
                 'pages' => $usesCase[$i]['pages'],
             ]);

@@ -16,6 +16,7 @@ class CreateAnalytekTable extends Migration
         Schema::create('use_cases', function(Blueprint $table){
             $table->id();
             $table->text('name');
+            $table->text('description');
             $table->integer('max_time');
             $table->text('pages');
         });

@@ -154,7 +154,3 @@ function showDescription(use_case){
     });
 }
 
-//hide description in the modal
-function hideDescription(){
-
-}
