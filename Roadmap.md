@@ -1,5 +1,5 @@
 # Roadmap Analytek
-Current version: v0.1.1
+Current version: v0.1.3
 ## v0.1.1
 - [x] Far (ri)partire il timer di _visit-time.js_ quando viene selezionato il caso d'uso
 - [x] Creare file di installazione
@@ -12,7 +12,7 @@ Current version: v0.1.1
 
 ## v0.1.3
 - [x] creare la view per i casi d'uso con i diversi grafici
-- [ ] aggiungere descrizione ai casi d'uso 
+- [x] aggiungere descrizione ai casi d'uso 
 
 ## v0.1.4
 - [ ] fare grafici con i parametri dell'utente?? forse meglio solo dei filtri

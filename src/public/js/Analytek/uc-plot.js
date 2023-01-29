@@ -8,7 +8,7 @@ const layout = {
     paper_bgcolor: '#040220',
     font: {
         color: "#f2f2f2"
-    }    
+    }
 };
 $('document').ready(drawPlot());
 
@@ -34,6 +34,7 @@ function plotMaxAvgTime(dataplot){
         x: [ max_time, avg_time],
         type: 'bar',
         orientation: 'h',
+        hoverinfo:'text',
         text: [max_time.toFixed(2) + " s", avg_time.toFixed(2) + " s"],
         marker: {
             line: {
@@ -54,6 +55,7 @@ function plotSuccessRate(dataplot){
         domain: [0, 100],
         type: 'bar',
         orientation: 'h',
+        hoverinfo:'text',
         text: [success.toFixed(2)*100, fail.toFixed(2)*100],
         marker: {
             color:[ green , red],
@@ -62,19 +64,21 @@ function plotSuccessRate(dataplot){
             }
         }
     }];
-    Plotly.newPlot("div-success", data, layout);
+    let mylayout =  {
+        plot_bgcolor: '#040220',
+        paper_bgcolor: '#040220',
+        xaxis:{
+            range:[0,100]
+        },
+        font: {
+            color: "#f2f2f2"
+        }    
+    };
+    Plotly.newPlot("div-success", data, mylayout);
 
 }
 
 function plotPathTime(dataplot){
-    let max_time={
-        name: 'max time',
-        type: 'scatter',
-
-        x: [5],
-        orientation: 'v',
-        type: 'bar'
-    };
     let paths = dataplot["paths"];
     let man_pages = JSON.stringify(dataplot["man_pages"]);
     let colors=[];
@@ -90,23 +94,46 @@ function plotPathTime(dataplot){
         }
     }
     let allData = [];
-    allData.push[max_time];
+    
     let used_page = [];
+    let max_time={
+        name: 'max_time',
+        x: [],
+        y: [],
+        orientation: 'v',
+        type: 'scatter',
+        marker: {
+            color: "#ffff00",
+            
+        }
+    };
     for( let path of paths){
         let colorIndex=0;
+        let time_path =0;
+        let time_section =0;
         path["page_time"].forEach(element =>{
             if(element["page"]==colors[colorIndex].page){
                 colorIndex++;
+                time_section=0;
             }
             let col = colors[colorIndex];
             let regex = RegExp(",", "g");
             let name_path = path["path"].replace(regex, ",<br>");
+            time_path+= element["avg_time"];
+            time_section+= element["avg_time"];
+            max_time.x.push(dataplot["max_time"]);
+            max_time.y.push(name_path);
+            
             let data = {
                 y: [name_path],
                 x: [element["avg_time"]],
                 type: 'bar',
                 name: col.page,
-                text: element["page"] + " " + element["avg_time"] + "s",
+                hoverinfo: 'text',
+                text: "page: " + element["page"] +  "<br>" +
+                    "timepage: " + element["avg_time"] + "s <br>" +
+                    "timesection: "+ time_section+"s <br>"+
+                    "timepath: " +time_path+"s",
                 orientation: 'h',
                 marker: {
                     color: col.color,
@@ -127,6 +154,10 @@ function plotPathTime(dataplot){
     };
     let mylayout = layout;
     mylayout.barmode= 'stack';
+    console.log(allData);
+    
+    allData.push(max_time);
+
     Plotly.newPlot("div-path-time", allData, mylayout);
 
 
@@ -145,6 +176,7 @@ function plotPathCount(dataplot){
             x: [path["count"]],
             type: 'bar',
             orientation: 'h',
+            hoverinfo:'text',
             text: path["count"],
             marker: {
                 line: {

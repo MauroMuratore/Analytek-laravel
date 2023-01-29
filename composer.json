@@ -1,6 +1,6 @@
 {
     "name": "murotek/analytek",
-    "description": "module for Laravel to install analytic cookies",
+    "description": "library for Laravel to install analytic cookies",
     "type": "library",
     "require": {
         "laravel/laravel": "^9.4",

@@ -2,8 +2,9 @@
     "use_cases": [
         {
             "name": "TEST",
+            "description": "test example",
             "max_time": 120,
-            "pages": "/cucina,/bar"
+            "pages": "/"
         }
     ]
 } 
